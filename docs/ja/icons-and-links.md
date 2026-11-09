@@ -12,12 +12,14 @@
 <svg class="s18 icon-svg"><use href="/assets/icons-….svg#icon--add"></use></svg><span class="icon-label">New value</span>
 ```
 
-- **大きさ:** 既定は 18px です(`size:`)。クラスは `s<大きさ>` です。
-- **塗りつぶし:** `style: :filled` で `icon-svg-filled` が付きます。
-- **右から左の言語:** `rtl: true` で、右から左の言語では矢印を左右反転します。
-- **アイコンだけ:** `icon_only: true` で、ラベルに `hidden` のクラスが付きます。リンクには、`reorder_handle` や `toggle_checkboxes_link` と同じく、`icon-only` のクラスと `title` を付けます。
-- **テーマのアイコン:** 今のテーマのスプライトにそのアイコンがあれば、`sprite_icon` はテーマのスプライトを使います([Redmine 7 のテーマ](themes.md))。
-- **プラグインのアイコン:** `sprite_icon('name', plugin: :my_plugin)` は、プラグインのアセットのスプライト `icons.svg`(`plugin_assets/my_plugin/icons.svg`)を使います。合うものがあれば、本体のアイコンを使います。
+| 項目 | 内容 |
+| --- | --- |
+| 大きさ | 既定は 18px です(`size:`)。クラスは `s<大きさ>` です |
+| 塗りつぶし | `style: :filled` で `icon-svg-filled` が付きます |
+| 右から左の言語 | `rtl: true` で、右から左の言語では矢印を左右反転します |
+| アイコンだけ | `icon_only: true` で、ラベルに `hidden` のクラスが付きます。リンクには、`reorder_handle` や `toggle_checkboxes_link` と同じく、`icon-only` のクラスと `title` を付けます |
+| テーマのアイコン | 今のテーマのスプライトにそのアイコンがあれば、`sprite_icon` はテーマのスプライトを使います([Redmine 7 のテーマ](themes.md)) |
+| プラグインのアイコン | `sprite_icon('name', plugin: :my_plugin)` は、プラグインのアセットのスプライト `icons.svg`(`plugin_assets/my_plugin/icons.svg`)を使います。合うものがあれば、本体のアイコンを使います |
 
 `.icon` と `.icon-only` は、アイコンとラベルを横に並べます。リンクでは、マウスを乗せるとアイコンの色が変わります。
 

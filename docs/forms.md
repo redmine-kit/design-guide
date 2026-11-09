@@ -31,13 +31,15 @@ A form to create or edit a record. The models are New project (`app/views/projec
 </div>
 ```
 
-- **Labels:** the builder uses the model's attribute name, or `:label` (a locale key or text). `.tabular p` has `padding-inline-start: 180px`; `.tabular label` is bold, end-aligned, 175px wide and floats into that column (`margin-inline-start: -180px`, `line-height: 24px`).
-- **Required fields:** `:required => true` adds `<span class="required"> *</span>` to the label (red, `--oc-red-9`).
-- **A field with an error:** its label gets `class="error"` (red).
-- **Help under a field:** `em.info` in the same `<p>`.
-- **Fields side by side:** `.tabular label.inline` (normal weight, not floating) or two columns with `.splitcontent` ([Page structure](page.md#two-columns)).
-- **Field widths:** `.tabular input` and `select` are at most 95% wide, `textarea` 95% wide and resizable in height.
-- **Buttons:** `submit_tag` after the box: the main action first (`button_create`, `button_save`), then a secondary one (`button_create_and_continue`). A cancel link, where there is one, follows as a plain link (`link_to l(:button_cancel), …`, as in `app/views/enumerations/destroy.html.erb`).
+| Item | Details |
+| --- | --- |
+| Labels | The builder uses the model's attribute name, or `:label` (a locale key or text). `.tabular p` has `padding-inline-start: 180px`; `.tabular label` is bold, end-aligned, 175px wide and floats into that column (`margin-inline-start: -180px`, `line-height: 24px`) |
+| Required fields | `:required => true` adds `<span class="required"> *</span>` to the label (red, `--oc-red-9`) |
+| A field with an error | Its label gets `class="error"` (red) |
+| Help under a field | `em.info` in the same `<p>` |
+| Fields side by side | `.tabular label.inline` (normal weight, not floating) or two columns with `.splitcontent` ([Page structure](page.md#two-columns)) |
+| Field widths | `.tabular input` and `select` are at most 95% wide, `textarea` 95% wide and resizable in height |
+| Buttons | `submit_tag` after the box: the main action first (`button_create`, `button_save`), then a secondary one (`button_create_and_continue`). A cancel link, where there is one, follows as a plain link (`link_to l(:button_cancel), …`, as in `app/views/enumerations/destroy.html.erb`) |
 
 ## Groups of fields
 

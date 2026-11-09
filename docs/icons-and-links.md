@@ -10,12 +10,14 @@ Icons come from one SVG sprite, and actions are links with an icon. Use the same
 <svg class="s18 icon-svg"><use href="/assets/icons-….svg#icon--add"></use></svg><span class="icon-label">New value</span>
 ```
 
-- **Size:** 18px by default (`size:`); the class is `s<size>`.
-- **Filled:** `style: :filled` adds `icon-svg-filled`.
-- **Right to left:** `rtl: true` mirrors arrows in right-to-left languages.
-- **Only the icon:** `icon_only: true` gives the label the `hidden` class; give the link the class `icon-only` and a `title`, as `reorder_handle` and `toggle_checkboxes_link` do.
-- **A theme's icons:** when the current theme has a sprite with the icon, `sprite_icon` uses the theme's sprite ([Redmine 7 themes](themes.md)).
-- **A plugin's icons:** `sprite_icon('name', plugin: :my_plugin)` uses the sprite `icons.svg` of the plugin's assets (`plugin_assets/my_plugin/icons.svg`). Use core's icons where one fits.
+| Item | Details |
+| --- | --- |
+| Size | 18px by default (`size:`); the class is `s<size>` |
+| Filled | `style: :filled` adds `icon-svg-filled` |
+| Right to left | `rtl: true` mirrors arrows in right-to-left languages |
+| Only the icon | `icon_only: true` gives the label the `hidden` class; give the link the class `icon-only` and a `title`, as `reorder_handle` and `toggle_checkboxes_link` do |
+| A theme's icons | When the current theme has a sprite with the icon, `sprite_icon` uses the theme's sprite ([Redmine 7 themes](themes.md)) |
+| A plugin's icons | `sprite_icon('name', plugin: :my_plugin)` uses the sprite `icons.svg` of the plugin's assets (`plugin_assets/my_plugin/icons.svg`). Use core's icons where one fits |
 
 `.icon` and `.icon-only` lay the icon and the label out in a row; links color the icon on hover.
 

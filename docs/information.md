@@ -30,8 +30,10 @@ Values and checks to show, not to edit: the state of a connection, versions, wha
 </div>
 ```
 
-- **Name and value:** a `table.list` without a header row; the name in `td.name` (start-aligned), the value in a plain `td` or, for a check, in `td.tick` with an icon. The table spans the width like every `table.list`; the name column takes what the names need.
-- **Checks:** `span.icon-only.icon-ok` with the `checked` icon when it passes, `span.icon-only.icon-error` with the `warning` icon when it fails. The classes color the icons green and red.
+| Item | Details |
+| --- | --- |
+| Name and value | A `table.list` without a header row; the name in `td.name` (start-aligned), the value in a plain `td` or, for a check, in `td.tick` with an icon. The table spans the width like every `table.list`; the name column takes what the names need |
+| Checks | `span.icon-only.icon-ok` with the `checked` icon when it passes, `span.icon-only.icon-error` with the `warning` icon when it fails. The classes color the icons green and red |
 - **Text output** (an environment, a log, a command's output): a `pre` in `div.box.autoscroll`, which scrolls sideways instead of widening the page (`.autoscroll`: `overflow-x: auto`, `margin-block-end: 1.2em`).
 - **Space before the next section:** the `<br />` after the table ([Lists](lists.md#spacing-after-a-list)).
 

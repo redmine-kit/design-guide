@@ -54,10 +54,12 @@ tabs = [
 ```
 
 - `setting_text_field`、`setting_textarea`、`setting_select`、`setting_multiselect`、`setting_check_box` は、ラベル(ロケールの `setting_<name>`、または `:label`)と項目を書きます。`setting_check_box` は、チェックを外した値も保存されるよう、隠し項目の `0` も書きます。
-- **ラベル:** `.tabular label` は太字で、終わりの側に寄せ、左の列に回り込みます。`.tabular.settings` の左の列は 300px で(`p` は `padding-inline-start: 300px`、`font-size: 93%`。`label` は幅 295px、`margin-inline-start: -300px`)、ほかのフォーム(180px)より広くなっています。ラベルは 1 行に収まる長さにし、長い説明は `em.info` に書きます。
-- **項目の下の説明:** 項目のあと、同じ `<p>` の中に `em.info` を置きます(`display: block`、`font-size: 90%`、灰色)。
-- **項目のあとの単位:** 項目のあとに文字をそのまま書きます(`… %> <%= l(:label_day_plural) %>`)。
-- **ボックスを分ける:** 長いタブは、ボックスを分けてまとまりにします。ボックスのあいだの間隔は、`.box` の `margin-block-end: 12px` が作ります。
+| 項目 | 内容 |
+| --- | --- |
+| ラベル | `.tabular label` は太字で、終わりの側に寄せ、左の列に回り込みます。`.tabular.settings` の左の列は 300px で(`p` は `padding-inline-start: 300px`、`font-size: 93%`。`label` は幅 295px、`margin-inline-start: -300px`)、ほかのフォーム(180px)より広くなっています。ラベルは 1 行に収まる長さにし、長い説明は `em.info` に書きます |
+| 項目の下の説明 | 項目のあと、同じ `<p>` の中に `em.info` を置きます(`display: block`、`font-size: 90%`、灰色) |
+| 項目のあとの単位 | 項目のあとに文字をそのまま書きます(`… %> <%= l(:label_day_plural) %>`) |
+| ボックスを分ける | 長いタブは、ボックスを分けてまとまりにします。ボックスのあいだの間隔は、`.box` の `margin-block-end: 12px` が作ります |
 
 <a id="checkboxes-with-their-text-after-them"></a>
 

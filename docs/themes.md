@@ -13,9 +13,11 @@ Redmine looks for themes in two directories:
 
 A directory is a theme only when it has `stylesheets/application.css`.
 
-- **Id:** the directory name, for example `my_theme`. Redmine stores it in the "Theme" setting (Administration » Settings » Display, the `ui_theme` setting).
-- **Name:** the directory name, humanized: `my_theme` becomes "My theme". Themes are sorted by name in the settings.
-- **Default:** an empty setting means Redmine's own stylesheets without a theme.
+| Item | Details |
+| --- | --- |
+| Id | The directory name, for example `my_theme`. Redmine stores it in the "Theme" setting (Administration » Settings » Display, the `ui_theme` setting) |
+| Name | The directory name, humanized: `my_theme` becomes "My theme". Themes are sorted by name in the settings |
+| Default | An empty setting means Redmine's own stylesheets without a theme |
 
 ## Directory layout
 
@@ -218,6 +220,8 @@ Themes do not apply to emails. Redmine's email layout has its own styles in a `<
 
 ## Restart and reload
 
-- **New theme:** restart Redmine. Redmine finds a new theme in the settings without a restart, but registers the files of themes for serving when it starts, so the new theme's files are not found (HTTP 404) until a restart (checked).
-- **Adding or removing files:** restart Redmine. Redmine keeps the list of a theme's stylesheets, scripts, images and favicons in memory.
-- **Editing files:** reload the page. In development mode, Redmine serves the changed file with a new digest (checked).
+| Item | Details |
+| --- | --- |
+| New theme | Restart Redmine. Redmine finds a new theme in the settings without a restart, but registers the files of themes for serving when it starts, so the new theme's files are not found (HTTP 404) until a restart (checked) |
+| Adding or removing files | Restart Redmine. Redmine keeps the list of a theme's stylesheets, scripts, images and favicons in memory |
+| Editing files | Reload the page. In development mode, Redmine serves the changed file with a new digest (checked) |

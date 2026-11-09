@@ -33,13 +33,15 @@
 </div>
 ```
 
-- **ラベル:** ビルダーは、モデルの属性の名前か、`:label`(ロケールのキーか文字)を使います。`.tabular p` は `padding-inline-start: 180px` で、`.tabular label` は太字、終わりの側に寄せ、幅 175px で、その列に回り込みます(`margin-inline-start: -180px`、`line-height: 24px`)。
-- **必須の項目:** `:required => true` で、ラベルに `<span class="required"> *</span>` が付きます(赤、`--oc-red-9`)。
-- **エラーのある項目:** ラベルに `class="error"` が付きます(赤)。
-- **項目の下の説明:** 同じ `<p>` の中に `em.info` を置きます。
-- **項目を横に並べる:** `.tabular label.inline`(ふつうの太さで、回り込まない)か、`.splitcontent` の 2 列にします([画面の組み立て](page.md#two-columns))。
-- **項目の幅:** `.tabular input` と `select` は最大で 95% の幅、`textarea` は 95% の幅で、高さだけ変えられます。
-- **ボタン:** ボックスのあとに `submit_tag` を置きます。主なアクション(`button_create`、`button_save`)を先に、次に補助のアクション(`button_create_and_continue`)です。キャンセルがあるときは、そのあとにふつうのリンクで置きます(`link_to l(:button_cancel), …`。`app/views/enumerations/destroy.html.erb` と同じ)。
+| 項目 | 内容 |
+| --- | --- |
+| ラベル | ビルダーは、モデルの属性の名前か、`:label`(ロケールのキーか文字)を使います。`.tabular p` は `padding-inline-start: 180px` で、`.tabular label` は太字、終わりの側に寄せ、幅 175px で、その列に回り込みます(`margin-inline-start: -180px`、`line-height: 24px`) |
+| 必須の項目 | `:required => true` で、ラベルに `<span class="required"> *</span>` が付きます(赤、`--oc-red-9`) |
+| エラーのある項目 | ラベルに `class="error"` が付きます(赤) |
+| 項目の下の説明 | 同じ `<p>` の中に `em.info` を置きます |
+| 項目を横に並べる | `.tabular label.inline`(ふつうの太さで、回り込まない)か、`.splitcontent` の 2 列にします([画面の組み立て](page.md#two-columns)) |
+| 項目の幅 | `.tabular input` と `select` は最大で 95% の幅、`textarea` は 95% の幅で、高さだけ変えられます |
+| ボタン | ボックスのあとに `submit_tag` を置きます。主なアクション(`button_create`、`button_save`)を先に、次に補助のアクション(`button_create_and_continue`)です。キャンセルがあるときは、そのあとにふつうのリンクで置きます(`link_to l(:button_cancel), …`。`app/views/enumerations/destroy.html.erb` と同じ) |
 
 <a id="groups-of-fields"></a>
 

@@ -50,9 +50,11 @@ Each tab is one form. The fields are in `div.box.tabular.settings`, one `<p>` pe
 ```
 
 - `setting_text_field`, `setting_textarea`, `setting_select`, `setting_multiselect` and `setting_check_box` write the label (`setting_<name>` in the locale, or `:label`) and the field. `setting_check_box` adds a hidden `0` so that an unchecked box is saved.
-- **Labels:** `.tabular label` is bold, end-aligned and floats into the left column. In `.tabular.settings` the left column is 300px (`p` has `padding-inline-start: 300px`, `font-size: 93%`; `label` is 295px wide with `margin-inline-start: -300px`), wider than in other forms (180px). Keep labels short enough for one line; longer explanations go in `em.info`.
-- **Help under a field:** `em.info` after the field, inside the same `<p>` (`display: block`, `font-size: 90%`, gray).
-- **A unit after a field:** plain text after the field (`… %> <%= l(:label_day_plural) %>`).
+| Item | Details |
+| --- | --- |
+| Labels | `.tabular label` is bold, end-aligned and floats into the left column. In `.tabular.settings` the left column is 300px (`p` has `padding-inline-start: 300px`, `font-size: 93%`; `label` is 295px wide with `margin-inline-start: -300px`), wider than in other forms (180px). Keep labels short enough for one line; longer explanations go in `em.info` |
+| Help under a field | `em.info` after the field, inside the same `<p>` (`display: block`, `font-size: 90%`, gray) |
+| A unit after a field | Plain text after the field (`… %> <%= l(:label_day_plural) %>`) |
 - **Several boxes** split a long tab into groups; the space between them comes from `.box`'s `margin-block-end: 12px`.
 
 ## Checkboxes with their text after them
