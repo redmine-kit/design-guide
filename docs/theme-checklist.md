@@ -50,6 +50,7 @@ The "Menus" previews show menus open, for example the context menu of the issue 
 
 | Item | What to check | Previews |
 | --- | --- | --- |
+| Colors | The variables the theme redefines, the role colors (text, links, borders, flash messages, list rows), contrast ([Colors](colors.md#contrast)) | Color palette |
 | Text | Headings, paragraphs, links, lists, code outside wiki content | Headings and text |
 | Flash messages | Notice, warning and error | Flash messages |
 | Notices | Warnings, conflicts, empty lists | Notices and empty states |

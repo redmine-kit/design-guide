@@ -17,7 +17,7 @@ The approach: before writing a screen, pick the core screen of the same kind and
 | Icons, action links, delete links | Throughout | [Icons and links](icons-and-links.md) |
 | A tab of a project's settings | Project › Settings | [Project settings](project-settings.md) |
 
-Where no core screen fits, see [Building a screen with no matching pattern](no-pattern.md).
+Where no core screen fits, see [Building a screen with no matching pattern](no-pattern.md). For colors, use core's variables: see [Colors](colors.md).
 
 ## Themes
 

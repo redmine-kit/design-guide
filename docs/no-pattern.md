@@ -13,7 +13,7 @@ When no pattern fits, add the smallest thing that does the job.
 | What to add | How |
 | --- | --- |
 | A class | Next to core's classes, named after what the element is, so that themes can reach it. Core does the same with `enumerations` on its `table.list`. |
-| CSS | A little, scoped to the plugin's own elements. Use core's CSS variables (`--oc-gray-4` and the others in `application.css`) so that themes and dark styles follow. |
+| CSS | A little, scoped to the plugin's own elements. Use core's CSS variables (`--oc-gray-4` and the others on the [Colors](colors.md) page) so that themes and dark styles follow. |
 
 Write the reason in the commit message or in the plugin's documentation.
 

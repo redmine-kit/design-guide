@@ -95,6 +95,8 @@ Redmine の `application.css` は、`open-color.css`([Open Color](https://yeun.g
 | `--color-current-marker` | `var(--oc-indigo-5)` | 選択中の項目の目印 |
 | `--oc-<色>-<0-9>` | Open Color | Redmine の CSS のほとんどの色(たとえば `--oc-gray-5`) |
 
+すべての変数とその値、本体がそれぞれを何に使っているかは、[カラーパレット](colors.md)のページにあります。
+
 Redmine 7 には、Noto Sans のフォント(標準、太字、斜体、太字の斜体)が付属しています。
 
 ```css

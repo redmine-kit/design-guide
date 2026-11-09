@@ -83,6 +83,8 @@ Redmine's `application.css` imports `open-color.css` ([Open Color](https://yeun.
 | `--color-current-marker` | `var(--oc-indigo-5)` | The marker of the current item |
 | `--oc-<color>-<0-9>` | Open Color | Most other colors of Redmine's stylesheets, for example `--oc-gray-5` |
 
+Every variable, its value and the role core gives it are on the [Colors](colors.md) page.
+
 Redmine 7 comes with the Noto Sans font (regular, bold, italic and bold italic).
 
 ```css
