@@ -4,7 +4,7 @@ How Redmine 7's own screens are built, for plugin screens that look and behave l
 
 ## Screens
 
-The approach: before writing a screen, pick the core screen of the same kind and write the view after it. With the same markup, helpers and classes, Redmine's default stylesheet lays the screen out, and themes style it as they style core. Add a class or a little CSS only where core has no pattern ([When core has no pattern](no-pattern.md)).
+The approach: before writing a screen, pick the core screen of the same kind and write the view after it. With the same markup, helpers and classes, Redmine's default stylesheet lays the screen out, and themes style it as they style core. Add a class or a little CSS only where core has no pattern.
 
 | Kind of screen | Core screen to follow | Page |
 | --- | --- | --- |
@@ -16,6 +16,8 @@ The approach: before writing a screen, pick the core screen of the same kind and
 | Notices, errors, warnings, empty states | Saving settings, a form with errors, an empty list | [Messages](messages.md) |
 | Icons, action links, delete links | Throughout | [Icons and links](icons-and-links.md) |
 | A tab of a project's settings | Project › Settings | [Project settings](project-settings.md) |
+
+Where no core screen fits, see [When core has no pattern](no-pattern.md).
 
 ## Themes
 
