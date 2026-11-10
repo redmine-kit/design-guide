@@ -1,12 +1,12 @@
 # Side panel
 
-A panel at the end side of the window, next to the page, for content that is read while working on the page: help for the screen, for example. Redmine 7.0.3 has no side panel, so this pattern is built from core's pieces with a small stylesheet for the frame. It comes from [Redmine Help](https://redmine-kit.github.io/redmine_help/), whose header link opens the help for the current screen in a side panel.
+A panel laid over the end side of the window, for content that is read while working on the page: help for the screen, for example. Redmine 7.0.3 has no side panel, so this pattern is built from core's pieces with a small stylesheet for the frame. It comes from [Redmine Help](https://redmine-kit.github.io/redmine_help/), whose header link opens the help for the current screen in a side panel.
 
-![The side panel of Redmine Help next to the new issue form](images/side-panel.png)
+![The side panel of Redmine Help over the new issue form](images/side-panel.png)
 
 ## When to use it
 
-Use a side panel for content that goes with the page and is read while the page is used: the page stays usable next to it, and a form can be filled in while the panel is open. The panel is not modal; it does not block the page.
+Use a side panel for content that goes with the page and is read while the page is used: the panel covers the end side of the page, the rest of the page stays usable, and a form can be filled in while the panel is open. The panel is not modal: there is no backdrop, and it does not block the page.
 
 For a task that has to be finished or cancelled before going on, use core's modal dialog instead (`showModal`, a jQuery UI dialog with `div.modal`, as for a new member in a project's settings, `members/new.js.erb`). For content that belongs to the page itself, use the page's own sidebar ([Page structure](page.md#sidebar)).
 
@@ -59,7 +59,7 @@ The header's actions are core's action links ([Icons and links](icons-and-links.
 
 ## CSS
 
-Only the frame and the position are new; everything inside the panel is core's. The colors are core's variables, so a theme that sets them styles the panel as it styles the sidebar. From Redmine Help's `assets/stylesheets/help_panel.css`:
+Only the frame, the edge and the position are new; everything inside the panel is core's. The colors are core's variables, so a theme that sets them styles the panel as it styles the sidebar. From Redmine Help's `assets/stylesheets/help_panel.css`:
 
 ```css
 :root { --help-panel-size: clamp(320px, 33vw, 480px); }
@@ -68,16 +68,18 @@ Only the frame and the position are new; everything inside the panel is core's. 
   position: fixed;
   inset-block: 0;
   inset-inline-end: 0;
-  z-index: 100;
+  z-index: 1001;
   box-sizing: border-box;
   inline-size: var(--help-panel-size);
   display: flex;
   flex-direction: column;
   background: var(--oc-gray-0);
   border-inline-start: 1px solid var(--oc-gray-4);
+  box-shadow: 0 0 6px rgba(var(--oc-black-rgb), 0.1);
   font-size: 0.875rem;
 }
 .help-panel[hidden] { display: none; }
+.help-panel.help-panel-under-dialog { z-index: 99; }
 .help-panel [hidden] { display: none; }
 .help-panel-header {
   padding-block: 10px 0;
@@ -92,24 +94,21 @@ Only the frame and the position are new; everything inside the panel is core's. 
   padding-inline: 20px 8px;
 }
 
-html.help-panel-open #wrapper { margin-inline-end: var(--help-panel-size); }
-html.help-panel-open #sticky-issue-header { inset-inline-end: var(--help-panel-size); }
-
 @media screen and (max-width: 899px) {
-  .help-panel { inline-size: auto; inset-inline-start: 0; z-index: 10000; border-inline-start: 0; }
-  html.help-panel-open #wrapper { margin-inline-end: 0; }
-  html.help-panel-open #sticky-issue-header { inset-inline-end: 0; }
+  .help-panel { inline-size: auto; inset-inline-start: 0; z-index: 10000; border-inline-start: 0; box-shadow: none; }
 }
 ```
 
 | Rule | Why |
 | --- | --- |
 | Width | About the width of core's sidebar at each window width (core's sidebar is 240px to 380px) |
-| Room next to the page | A margin on `#wrapper` while the panel is open, so that the page is not covered and stays usable. Core's sticky issue header is fixed to the window, so it gets the same room |
-| `z-index: 100` | jQuery UI's `.ui-front`: core's dialogs open later in the document and come above the panel |
+| Over the page | The panel is laid over the page, which keeps its layout; the part it does not cover stays usable. There is no backdrop |
+| Edge | The edge of core's dropdowns (`dropdown.css`: a 1px `var(--oc-gray-4)` border, a light shadow of `rgba(var(--oc-black-rgb), 0.1)`), without the offset, since the panel runs the full height |
+| `z-index: 1001` | Above core's sticky issue header and dropdowns (`z-index: 1000`), so that they don't cover the panel's header |
+| Under a dialog | Core's modal dialogs (jQuery UI's `.ui-front`, `z-index: 100`) would open under the panel. While one is open, the script gives the panel `help-panel-under-dialog` (`dialogopen` and `dialogclose` events), and the dialog and its backdrop come above it |
 | Narrow windows | At core's responsive breakpoint (`responsive.css`, up to 899px), the panel covers the window, above core's fixed header (`z-index: 9999` there) |
 | `[hidden]` inside the panel | Core's `.icon` is `display: inline-flex`, which would show an action link hidden with the `hidden` attribute (Back on the first page) |
-| Logical properties | `inset-inline-end`, `border-inline-start` and `margin-inline-end` put the panel at the left in right-to-left languages, as core's own rules do |
+| Logical properties | `inset-inline-end` and `border-inline-start` put the panel at the left in right-to-left languages, as core's own rules do |
 
 ## Behavior
 
@@ -118,12 +117,12 @@ html.help-panel-open #sticky-issue-header { inset-inline-end: var(--help-panel-s
 | Opening and closing | A link in the page (Redmine Help: the header's Help link) toggles the panel. Close in the panel and Esc close it too |
 | The toggle | The link gets `role="button"`, `aria-expanded` and `aria-controls` (the panel's id); Space presses it as Enter does |
 | Focus | Opening moves the focus to the title (`tabindex="-1"`); closing moves it back to the toggle. On narrow windows, where the toggle is in the closed flyout menu, to the menu's button |
-| Links in the panel | Links of the panel's own content load in the panel, with Back; links to other pages open in a new window, so that the page next to the panel stays |
+| Links in the panel | Links of the panel's own content load in the panel, with Back; links to other pages open in a new window, so that the page under the panel stays |
 | Kept across pages | Whether the panel is open is kept in `localStorage` (in `try`/`catch`), and an open panel opens again on the next page |
 | Without JavaScript | The toggle is a plain link to a full page with the same content |
 
 ## Compare with core
 
-Take screenshots of the page with the panel open and of the same page without it, at the same width, in English and Japanese, and check that the page still lays out as core does in the narrower width. Check a narrow window too.
+Take screenshots of the page with the panel open and of the same page without it, at the same width, in English and Japanese: the page keeps its layout under the panel, and the panel's edge stands out from the page. Open one of core's dialogs with the panel open, and check a narrow window too.
 
-![The side panel next to Administration › Settings › Authentication](images/side-panel-settings.png)
+![The side panel over Administration › Settings › Authentication](images/side-panel-settings.png)

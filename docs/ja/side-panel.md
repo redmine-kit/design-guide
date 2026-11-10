@@ -1,14 +1,14 @@
 # サイドパネル
 
-ウィンドウの端、画面の横に開くパネルです。画面を操作しながら読む内容 (たとえば画面のヘルプ) に使います。Redmine 7.0.3 にはサイドパネルがないため、このパターンは本体の部品で組み立て、枠だけを小さなスタイルシートで足します。[Redmine Help](https://redmine-kit.github.io/redmine_help/ja/) のパターンです。Redmine Help では、ヘッダーの「ヘルプ」がいま開いている画面のヘルプをサイドパネルに開きます。
+ウィンドウの端に、画面に重ねて開くパネルです。画面を操作しながら読む内容 (たとえば画面のヘルプ) に使います。Redmine 7.0.3 にはサイドパネルがないため、このパターンは本体の部品で組み立て、枠だけを小さなスタイルシートで足します。[Redmine Help](https://redmine-kit.github.io/redmine_help/ja/) のパターンです。Redmine Help では、ヘッダーの「ヘルプ」がいま開いている画面のヘルプをサイドパネルに開きます。
 
-![新しいチケットのフォームの横の、Redmine Help のサイドパネル](images/side-panel.png)
+![新しいチケットのフォームに重ねた、Redmine Help のサイドパネル](images/side-panel.png)
 
 <a id="when-to-use-it"></a>
 
 ## 使う場面
 
-画面に付随し、画面を操作しながら読む内容に使います。サイドパネルを開いたままでも横の画面を操作でき、フォームにも入力できます。サイドパネルはモーダルではなく、画面を操作できないようにはしません。
+画面に付随し、画面を操作しながら読む内容に使います。サイドパネルは画面の端を覆い、覆っていない部分はそのまま操作でき、フォームにも入力できます。サイドパネルはモーダルではありません。背景を覆うことはなく、画面を操作できないようにはしません。
 
 終えるか取り消すまで先に進めない作業には、本体のモーダルダイアログ (`showModal`。`div.modal` の jQuery UI のダイアログ。プロジェクトの設定でメンバーを追加するときなど、`members/new.js.erb`) を使います。画面そのものに属する内容には、画面のサイドバー ([画面の組み立て](page.md#sidebar)) を使います。
 
@@ -65,7 +65,7 @@
 
 ## CSS
 
-新しく足すのは枠と位置だけで、サイドパネルの中はすべて本体のものです。色は本体の CSS 変数なので、これらを設定するテーマは、サイドバーと同じくサイドパネルにも反映されます。Redmine Help の `assets/stylesheets/help_panel.css` から:
+新しく足すのは枠、境界、位置だけで、サイドパネルの中はすべて本体のものです。色は本体の CSS 変数なので、これらを設定するテーマは、サイドバーと同じくサイドパネルにも反映されます。Redmine Help の `assets/stylesheets/help_panel.css` から:
 
 ```css
 :root { --help-panel-size: clamp(320px, 33vw, 480px); }
@@ -74,16 +74,18 @@
   position: fixed;
   inset-block: 0;
   inset-inline-end: 0;
-  z-index: 100;
+  z-index: 1001;
   box-sizing: border-box;
   inline-size: var(--help-panel-size);
   display: flex;
   flex-direction: column;
   background: var(--oc-gray-0);
   border-inline-start: 1px solid var(--oc-gray-4);
+  box-shadow: 0 0 6px rgba(var(--oc-black-rgb), 0.1);
   font-size: 0.875rem;
 }
 .help-panel[hidden] { display: none; }
+.help-panel.help-panel-under-dialog { z-index: 99; }
 .help-panel [hidden] { display: none; }
 .help-panel-header {
   padding-block: 10px 0;
@@ -98,24 +100,21 @@
   padding-inline: 20px 8px;
 }
 
-html.help-panel-open #wrapper { margin-inline-end: var(--help-panel-size); }
-html.help-panel-open #sticky-issue-header { inset-inline-end: var(--help-panel-size); }
-
 @media screen and (max-width: 899px) {
-  .help-panel { inline-size: auto; inset-inline-start: 0; z-index: 10000; border-inline-start: 0; }
-  html.help-panel-open #wrapper { margin-inline-end: 0; }
-  html.help-panel-open #sticky-issue-header { inset-inline-end: 0; }
+  .help-panel { inline-size: auto; inset-inline-start: 0; z-index: 10000; border-inline-start: 0; box-shadow: none; }
 }
 ```
 
 | ルール | 理由 |
 | --- | --- |
 | 幅 | ウィンドウの幅ごとの本体のサイドバーの幅 (240px から 380px) と同じくらいです |
-| 画面の横の空き | サイドパネルを開いている間、`#wrapper` にマージンを付けます。画面を覆わず、そのまま操作できます。本体のチケットのスティッキーヘッダーはウィンドウに固定されているので、同じだけ空けます |
-| `z-index: 100` | jQuery UI の `.ui-front` と同じです。本体のダイアログは後から文書に足されるので、サイドパネルの上に出ます |
+| 画面に重ねる | サイドパネルは画面に重ねて表示し、画面のレイアウトは変えません。覆っていない部分はそのまま操作できます。背景は覆いません |
+| 境界 | 本体のドロップダウン (`dropdown.css`) と同じ 1px の `var(--oc-gray-4)` の境界線と、`rgba(var(--oc-black-rgb), 0.1)` の薄い影です。高さいっぱいのパネルなので、影はずらしません |
+| `z-index: 1001` | 本体のチケットのスティッキーヘッダーとドロップダウン (`z-index: 1000`) より上にし、サイドパネルのヘッダーが隠れないようにします |
+| ダイアログの下 | 本体のモーダルダイアログ (jQuery UI の `.ui-front`、`z-index: 100`) は、そのままではサイドパネルの下に開きます。ダイアログを開いている間はスクリプトがサイドパネルに `help-panel-under-dialog` を付け (`dialogopen` と `dialogclose` のイベント)、ダイアログとその背景がサイドパネルの上に出ます |
 | 狭いウィンドウ | 本体のレスポンシブレイアウトのブレークポイント (`responsive.css`、幅 899px まで) では、サイドパネルがウィンドウ全体を覆います。本体の固定ヘッダー (そこでは `z-index: 9999`) より上です |
 | サイドパネルの中の `[hidden]` | 本体の `.icon` は `display: inline-flex` なので、`hidden` 属性で隠したアクションのリンク (最初のページの「戻る」) が表示されてしまいます |
-| 論理プロパティ | `inset-inline-end`、`border-inline-start`、`margin-inline-end` を使うので、右から左に書く言語ではサイドパネルが左に出ます。本体のルールと同じです |
+| 論理プロパティ | `inset-inline-end` と `border-inline-start` を使うので、右から左に書く言語ではサイドパネルが左に出ます。本体のルールと同じです |
 
 <a id="behavior"></a>
 
@@ -126,7 +125,7 @@ html.help-panel-open #sticky-issue-header { inset-inline-end: var(--help-panel-s
 | 開閉 | 画面のリンク (Redmine Help ではヘッダーの「ヘルプ」) でサイドパネルを開閉します。サイドパネルの「閉じる」と Esc キーでも閉じます |
 | 開閉のリンク | リンクに `role="button"`、`aria-expanded`、`aria-controls` (サイドパネルの id) を付けます。Enter と同じく Space キーでも押せます |
 | フォーカス | 開くとタイトル (`tabindex="-1"`) に、閉じると開閉のリンクに戻します。開閉のリンクが閉じたフライアウトメニューの中にある狭いウィンドウでは、メニューのボタンに戻します |
-| サイドパネルの中のリンク | サイドパネル自身の内容へのリンクはサイドパネルの中で開き、「戻る」で戻れます。ほかのページへのリンクは新しいウィンドウで開き、横の画面はそのまま残します |
+| サイドパネルの中のリンク | サイドパネル自身の内容へのリンクはサイドパネルの中で開き、「戻る」で戻れます。ほかのページへのリンクは新しいウィンドウで開き、サイドパネルの下の画面はそのまま残します |
 | ページをまたぐ状態 | 開いているかどうかを `localStorage` に保存し (`try`/`catch` で囲みます)、開いていれば次のページでも開きます |
 | JavaScript がないとき | 開閉のリンクは、同じ内容の全画面のページへの普通のリンクです |
 
@@ -134,6 +133,6 @@ html.help-panel-open #sticky-issue-header { inset-inline-end: var(--help-panel-s
 
 ## 本体と比べる
 
-サイドパネルを開いた画面と開いていない同じ画面のスクリーンショットを、同じ幅で、英語と日本語で撮って比べます。狭くなった幅でも、画面が本体と同じように並ぶことを確認します。狭いウィンドウも確認します。
+サイドパネルを開いた画面と開いていない同じ画面のスクリーンショットを、同じ幅で、英語と日本語で撮って比べます。サイドパネルの下でも画面のレイアウトが変わらないこと、サイドパネルの境界が画面と区別できることを確認します。サイドパネルを開いたまま本体のダイアログを開き、狭いウィンドウも確認します。
 
-![「管理」›「設定」›「認証」の横のサイドパネル](images/side-panel-settings.png)
+![「管理」›「設定」›「認証」に重ねたサイドパネル](images/side-panel-settings.png)

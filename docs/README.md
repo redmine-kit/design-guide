@@ -16,7 +16,7 @@ The approach: before writing a screen, pick the core screen of the same kind and
 | Notices, errors, warnings, empty states | Saving settings, a form with errors, an empty list | [Messages](messages.md) |
 | Icons, action links, delete links | Throughout | [Icons and links](icons-and-links.md) |
 | A tab of a project's settings | Project › Settings | [Project settings](project-settings.md) |
-| A panel next to the page, read while using it | None in core (Redmine Help's help panel) | [Side panel](side-panel.md) |
+| A panel over the side of the page, read while using it | None in core (Redmine Help's help panel) | [Side panel](side-panel.md) |
 
 Where no core screen fits, see [Building a screen with no matching pattern](no-pattern.md). For colors, use core's variables: see [Colors](colors.md).
 
