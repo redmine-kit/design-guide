@@ -16,6 +16,7 @@ The approach: before writing a screen, pick the core screen of the same kind and
 | Notices, errors, warnings, empty states | Saving settings, a form with errors, an empty list | [Messages](messages.md) |
 | Icons, action links, delete links | Throughout | [Icons and links](icons-and-links.md) |
 | A tab of a project's settings | Project › Settings | [Project settings](project-settings.md) |
+| A panel next to the page, read while using it | None in core (Redmine Help's help panel) | [Side panel](side-panel.md) |
 
 Where no core screen fits, see [Building a screen with no matching pattern](no-pattern.md). For colors, use core's variables: see [Colors](colors.md).
 
@@ -32,7 +33,7 @@ The screenshots are Redmine 7.0.3 as released, with Redmine's test data, at 1280
 bin/screenshots
 ```
 
-The two images of the theme checklist (the context menu and the Git revisions) are previews of Redmine Lookbook.
+The two images of the theme checklist (the context menu and the Git revisions) are previews of Redmine Lookbook. The images of the side panel are Redmine Help's (its `bin/screenshots`), since core has no side panel.
 
 Redmine is a trademark of Jean-Philippe Lang. This guide quotes Redmine's code (GPL-2.0) to show its patterns.
 
