@@ -19,7 +19,7 @@ Redmine は、2 つのディレクトリからテーマを探します。
 | --- | --- |
 | id | ディレクトリの名前です(たとえば `my_theme`)。Redmine は、これを「テーマ」の設定(管理 » 設定 » 表示、`ui_theme` の設定)に保存します |
 | 名前 | ディレクトリの名前を読みやすくしたものです。`my_theme` は「My theme」になります。設定の画面では、テーマは名前の順に並びます |
-| 既定 | 設定が空のときは、テーマを使わず、Redmine 自身の CSS だけを使います |
+| デフォルト | 設定が空のときは、テーマを使わず、Redmine 自身の CSS だけを使います |
 
 <a id="directory-layout"></a>
 
@@ -87,7 +87,7 @@ Redmine のレイアウトは、スタイルシートを次の順に読み込み
 
 Redmine の `application.css` は、`open-color.css`([Open Color](https://yeun.github.io/open-color/) 1.9.1)を読み込み、`:root` にいくつかのカスタムプロパティを定義しています。テーマは、`application.css` の `@import` のあとで、これらを設定できます。
 
-| カスタムプロパティ | 既定値 | 用途 |
+| カスタムプロパティ | デフォルト値 | 用途 |
 | --- | --- | --- |
 | `--fonts-main` | `"Noto Sans", sans-serif` | 画面の文字 |
 | `--color-header-background` | `#3A78A3` | ヘッダー |
@@ -149,7 +149,7 @@ Redmine は、テーマのスタイルシートの `url()` の参照を、ダイ
 
 ### legacy-icons-compat.css
 
-Redmine 7 では、古いラスター画像のアイコンが削除されました。`legacy-icons-compat.css` は、SVG のアイコンに移行していないプラグインのために、その見た目を戻します。既定では読み込まれず、プラグインやテーマが `@import url('/legacy-icons-compat.css');` で読み込みます。Redmine は、今後のバージョンで削除するとしています。
+Redmine 7 では、古いラスター画像のアイコンが削除されました。`legacy-icons-compat.css` は、SVG のアイコンに移行していないプラグインのために、その見た目を戻します。デフォルトでは読み込まれず、プラグインやテーマが `@import url('/legacy-icons-compat.css');` で読み込みます。Redmine は、今後のバージョンで削除するとしています。
 
 <a id="javascript"></a>
 
@@ -210,7 +210,7 @@ Redmine 7 は、SVG のスプライト `icons.svg` からアイコンを描き�
 | `action-<名前>` | 常に(たとえば `action-show`) |
 | `textarea-<フォント>` | ユーザーが個人設定でテキストエリアのフォント(`monospace` か `proportional`)を選んでいるとき |
 
-`<body>` には、テキストの書式の設定を示す `data-text-formatting` もあります(Redmine 7 の既定は `common_mark`)。
+`<body>` には、テキストの書式の設定を示す `data-text-formatting` もあります(Redmine 7 のデフォルトは `common_mark`)。
 
 `<html>` には、`lang`(ユーザーの言語)と `dir`(`ltr`、またはアラビア語、ペルシア語、ヘブライ語では `rtl`)があります。
 

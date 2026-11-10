@@ -2,7 +2,7 @@
 
 Redmine 7 のテーマが対応する必要のある項目と、それぞれを確認する [Redmine Lookbook](https://redmine-kit.github.io/redmine_lookbook/ja/) のプレビューです。プレビューは、Lookbook のナビゲーションに表示される名前で書いています([プレビューの一覧](https://redmine-kit.github.io/redmine_lookbook/ja/previews.html))。Redmine がテーマを適用する仕組みは、[Redmine 7 のテーマ](themes.md)を参照してください。
 
-各項目は、まず Lookbook のツールバーの既定で確認し([プレビューの使い方](https://redmine-kit.github.io/redmine_lookbook/ja/usage.html))、次の設定でも確認します。
+各項目は、まず Lookbook のツールバーのデフォルト設定で確認し([プレビューの使い方](https://redmine-kit.github.io/redmine_lookbook/ja/usage.html))、次の設定でも確認します。
 
 - 「Redmine layout」: ヘッダー、メニュー、サイドバー
 - 右から左に書く言語(アラビア語、ペルシア語、ヘブライ語)
